@@ -1,4 +1,4 @@
-SRC = main.cpp Searializer.cpp
+SRC = main.cpp Serializer.cpp
 OBJ = $(SRC:.cpp=.o)
 CC = c++
 RM = rm -f
