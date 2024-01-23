@@ -82,9 +82,10 @@ static void ConvertChar(std::string input) {
 }
 
 static void ConvertInt(std::string input) {
-	int i = std::stoi(input);
-	float f = static_cast<float>(i);
-	double d = static_cast<double>(i);
+	try{
+		int i = std::stoi(input);
+		float f = static_cast<float>(i);
+		double d = static_cast<double>(i);
 	std::cout << "char: ";
 	if (i >= 0 && i <= 127)
 		if (isprint(i))
@@ -96,49 +97,63 @@ static void ConvertInt(std::string input) {
 	std::cout << "int: " << i << std::endl;
 	std::cout << "float: " << std::fixed << std::setprecision(1) << f << "f" << std::endl;
 	std::cout << "double: " << std::fixed << std::setprecision(1) << d << std::endl;
+	}catch(const std::exception& e){
+		std::cout << "Invalid ARG" << std::endl;
+		exit(1);
+	}
 }
 
 static void ConvertFloat(std::string input) {
-	float f = std::stof(input);
-	double d = static_cast<double>(f);
-	std::cout << "char: ";
-	if (f >= 0 && f <= 127)
-		if (isprint(f))
-			std::cout << static_cast<char>(f) << std::endl;
+	try{	
+		float f = std::stof(input);
+		double d = static_cast<double>(f);
+		std::cout << "char: ";
+		if (f >= 0 && f <= 127)
+			if (isprint(f))
+				std::cout << static_cast<char>(f) << std::endl;
+			else
+				std::cout << "Non displayable" << std::endl;
 		else
-			std::cout << "Non displayable" << std::endl;
-	else
-		std::cout << "impossible" << std::endl;
-	std::cout << "int: ";
-	if (f >= INT_MIN && f <= INT_MAX)
-		std::cout << static_cast<int>(f) << std::endl;
-	else
-		std::cout << "impossible" << std::endl;
-	std::cout << "float: " << std::fixed << std::setprecision(1) << f << "f" << std::endl;
-	std::cout << "double: " << std::fixed << std::setprecision(1) << d << std::endl;
+			std::cout << "impossible" << std::endl;
+		std::cout << "int: ";
+		if (f >= INT_MIN && f <= INT_MAX)
+			std::cout << static_cast<int>(f) << std::endl;
+		else
+			std::cout << "impossible" << std::endl;
+		std::cout << "float: " << std::fixed << std::setprecision(1) << f << "f" << std::endl;
+		std::cout << "double: " << std::fixed << std::setprecision(1) << d << std::endl;
+	}catch(const std::exception& e){
+		std::cout << "Invalid ARG" << std::endl;
+		exit(1);
+	}
 }
 
 static void ConvertDouble(std::string input) {
-	double d = std::stod(input);
-	std::cout << "char: ";
-	if (d >= 0 && d <= 127)
-		if (isprint(d))
-			std::cout << static_cast<char>(d) << std::endl;
+	try{
+		double d = std::stod(input);
+		std::cout << "char: ";
+		if (d >= 0 && d <= 127)
+			if (isprint(d))
+				std::cout << static_cast<char>(d) << std::endl;
+			else
+				std::cout << "Non displayable" << std::endl;
 		else
-			std::cout << "Non displayable" << std::endl;
-	else
-		std::cout << "impossible" << std::endl;
-	std::cout << "int: ";
-	if (d >= INT_MIN && d <= INT_MAX)
-		std::cout << static_cast<int>(d) << std::endl;
-	else
-		std::cout << "impossible" << std::endl;
-	std::cout << "float: ";
-	if (d >= -FLT_MAX && d <= FLT_MAX)
-		std::cout << std::fixed << std::setprecision(1) << static_cast<float>(d) << "f" << std::endl;
-	else
-		std::cout << "impossible" << std::endl;
-	std::cout << "double: " << std::fixed << std::setprecision(1) << d << std::endl;
+			std::cout << "impossible" << std::endl;
+		std::cout << "int: ";
+		if (d >= INT_MIN && d <= INT_MAX)
+			std::cout << static_cast<int>(d) << std::endl;
+		else
+			std::cout << "impossible" << std::endl;
+		std::cout << "float: ";
+		if (d >= -FLT_MAX && d <= FLT_MAX)
+			std::cout << std::fixed << std::setprecision(1) << static_cast<float>(d) << "f" << std::endl;
+		else
+			std::cout << "impossible" << std::endl;
+		std::cout << "double: " << std::fixed << std::setprecision(1) << d << std::endl;
+	}catch(const std::exception& e){
+		std::cout << "Invalid ARG" << std::endl;
+		exit(1);
+	}
 }
 
 static void ConvertNan() {
