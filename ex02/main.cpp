@@ -53,5 +53,6 @@ int main(){
 	identify(base);
 	identify(*base);
 
+	delete base;
 	return (0);
 }
